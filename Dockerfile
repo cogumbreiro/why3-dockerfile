@@ -3,7 +3,7 @@ MAINTAINER Tiago Cogumbreiro
 
 ENV WHY3_VER 0.86
 ENV OPAMROOT /opam
-ENV PATH $OPAMROOT/sytem/bin:$PATH
+ENV PATH $OPAMROOT/system/bin:$PATH
 
 # Install base software
 RUN apt-get update && \
