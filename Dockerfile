@@ -2,8 +2,6 @@ FROM ubuntu:15.04
 MAINTAINER Tiago Cogumbreiro
 
 ENV WHY3_VER 0.86.1
-ENV OPAMROOT /opam
-ENV PATH $OPAMROOT/system/bin:$PATH
 
 # Install base software
 RUN apt-get update && \
@@ -42,5 +40,6 @@ RUN apt-get update && \
         libgtksourceview2.0-dev \
         dbus \
         liblablgtksourceview2-ocaml-dev && \
-    apt-get clean
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
