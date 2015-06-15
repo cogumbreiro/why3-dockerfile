@@ -1,7 +1,7 @@
 FROM ubuntu:15.04
 MAINTAINER Tiago Cogumbreiro
 
-ENV WHY3_VER 0.86
+ENV WHY3_VER 0.86.1
 ENV OPAMROOT /opam
 ENV PATH $OPAMROOT/system/bin:$PATH
 
@@ -14,19 +14,21 @@ RUN apt-get update && \
         git \
         curl \
         ocaml \
-        m4 \
-        aspcud \
-        opam \
         pkg-config \
         libgmp10 \
         libgmp-dev \
         libgtksourceview2.0 \
-        libgtksourceview2.0-dev && \
-    opam init -a && \
-    opam install -y why3=$WHY3_VER && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
+        libgtksourceview2.0-dev \
+        menhir \
+        liblablgtksourceview2-ocaml \
+        liblablgtksourceview2-ocaml-dev && \
+    cd /tmp && curl -L https://gforge.inria.fr/frs/download.php/file/34797/why3-$WHY3_VER.tar.gz | tar zx && \
+    cd /tmp/why3-$WHY3_VER && \
+    ./configure --prefix=/usr/local && \
+    make && \
+    make install && \
     apt-get autoremove -y \
+        m4 \
         libc6-dev \
         make \
         libgmp-dev \
@@ -37,4 +39,7 @@ RUN apt-get update && \
         curl \
         pkg-config \
         libgtksourceview2.0-dev \
-        dbus
+        dbus \
+        liblablgtksourceview2-ocaml-dev && \
+    apt-get clean
+
