@@ -27,6 +27,7 @@ RUN apt-get update && \
     ./configure --prefix=/usr/local && \
     make && \
     make install && \
+    rm -rf /tmp/why3-$WHY3_VER && \
     apt-get autoremove -y \
         m4 \
         libc6-dev \
