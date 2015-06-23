@@ -18,6 +18,8 @@ RUN apt-get update && \
         libgtksourceview2.0 \
         libgtksourceview2.0-dev \
         menhir \
+        libzip-ocaml \
+        libzip-ocaml-dev \
         liblablgtksourceview2-ocaml \
         liblablgtksourceview2-ocaml-dev && \
     cd /tmp && curl -L https://gforge.inria.fr/frs/download.php/file/34797/why3-$WHY3_VER.tar.gz | tar zx && \
@@ -39,7 +41,7 @@ RUN apt-get update && \
         pkg-config \
         libgtksourceview2.0-dev \
         dbus \
+        libzip-ocaml-dev \
         liblablgtksourceview2-ocaml-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
